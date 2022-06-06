@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chess board</title>
+</head>
+<style>
+    body{
+        text-align: center;
+    }
+   .cell{
+       height: 50px;
+       width: 50px;
+       border:1.5px solid rgb(58, 0, 0) ;
+       border-style: inset;
+   }
+   .blackcell{
+       background-color: rgb(117, 69, 6);
+
+   }
+   .whitecell{
+       background-color: rgb(219, 183, 128);
+   }
+</style>
+<body> 
+    <span style="color:rgb(68, 32, 2);font-size: 30px;">chess board
+    </span>
+<br><br>
+<img src="/home/riley12/chess-board/chess/board/static/images/bishop.jpeg" alt="">
+<script type="text/javascript">
+      // Create a center tag to center all the elements
+      var center = document.createElement('center');
+        // Create a table element
+        var ChessTable = document.createElement('table');
+        for (var i = 0; i < 8; i++) {
+            // Create a row
+            var tr = document.createElement('tr');
+            for (var j = 0; j < 8; j++) {
+                // Create a cell
+                var td = document.createElement('td');
+                // If the sum of cell coordinates is even
+                // then color the cell white
+                if ((i + j) % 2 == 0) {
+                    // Create a class attribute for all white cells
+                    td.setAttribute('class', 'cell whitecell');
+                    tr.appendChild(td);
+                }
+                // If the sum of cell coordinates is odd then
+                // color the cell black
+                else {
+                    // Create a class attribute for all black cells
+                    td.setAttribute('class', 'cell blackcell');
+                    // Append the cell to its row
+                    tr.appendChild(td);
+                }
+            }
+            // Append the row
+            ChessTable.appendChild(tr);
+        }
+        center.appendChild(ChessTable);
+        // Modifying table attribute properties
+        ChessTable.setAttribute('cellspacing', '0');
+        ChessTable.setAttribute('width', '570px');
+        document.body.appendChild(center);
+
+        
+// total positions the Bishop
+// can visit in a single move
+function countSquares(row, column)
+{
+ 
+    // Count top left squares
+    var topLeft = Math.min(row, column) - 1;
+ 
+    // Count bottom right squares
+    var bottomRight = 8 - Math.max(row, column);
+ 
+    // Count top right squares
+    var topRight = Math.min(row, 9 - column) - 1;
+ 
+    // Count bottom left squares
+    var bottomLeft = 8 - Math.max(row, 9 - column);
+ 
+    // Return total count
+    return (topLeft + topRight + bottomRight + bottomLeft);
+}
+ 
+// Driver code
+// Bishop's Position
+var row = 4, column = 4;
+document.write( countSquares(row, column));
+ 
+    
+</script>
+</body>
+</html>
